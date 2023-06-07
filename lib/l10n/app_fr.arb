@@ -1,0 +1,14 @@
+{
+    "helloWorld": "Bonjour le monde",
+    "settings": "Paramètres",
+    "home": "Accueil",
+    "clients": "Clients",
+    "projects": "Projets",
+    "database": "Base de données",
+    "delete": "Supprimer",
+    "backup": "Sauvegarder",
+    "restore": "Restaurer",
+    "confirmDeleteDatabase": "Êtes-vous sûr de vouloir supprimer la base de données ?",
+    "yes": "Oui",
+    "no": "Non"
+}

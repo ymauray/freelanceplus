@@ -1,0 +1,14 @@
+{
+    "helloWorld": "Hello World",
+    "settings": "Settings",
+    "home": "Home",
+    "clients": "Clients",
+    "projects": "Projects",
+    "database": "Database",
+    "delete": "Delete",
+    "backup": "Backup",
+    "restore": "Restore",
+    "confirmDeleteDatabase": "Are you sure you want to delete the database?",
+    "yes": "Yes",
+    "no": "No"
+}
