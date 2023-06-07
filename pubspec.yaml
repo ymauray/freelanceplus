@@ -41,6 +41,11 @@ flutter_native_splash:
   android: true
   ios: true
 
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/img/round_icon.png"
+
 flutter:
   uses-material-design: true
   generate: true
