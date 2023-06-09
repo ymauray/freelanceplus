@@ -65,8 +65,10 @@ class ClientForm extends ConsumerWidget {
                     children: [
                       FormBuilderTextField(
                         name: 'company',
+                        keyboardType: TextInputType.name,
+                        textCapitalization: TextCapitalization.words,
                         decoration: FormFieldDecoration(
-                          labelText: context.t.clientFormName,
+                          hintText: context.t.clientFormName,
                         ),
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(),
@@ -74,10 +76,12 @@ class ClientForm extends ConsumerWidget {
                       ),
                       FormBuilderTextField(
                         name: 'address',
+                        keyboardType: TextInputType.multiline,
+                        textCapitalization: TextCapitalization.words,
                         minLines: 3,
                         maxLines: 5,
                         decoration: FormFieldDecoration(
-                          labelText: context.t.clientFormAddress,
+                          hintText: context.t.clientFormAddress,
                         ),
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(),
@@ -85,8 +89,9 @@ class ClientForm extends ConsumerWidget {
                       ),
                       FormBuilderTextField(
                         name: 'phone',
+                        keyboardType: TextInputType.phone,
                         decoration: FormFieldDecoration(
-                          labelText: context.t.clientFormPhone,
+                          hintText: context.t.clientFormPhone,
                         ),
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(),
@@ -94,8 +99,9 @@ class ClientForm extends ConsumerWidget {
                       ),
                       FormBuilderTextField(
                         name: 'email',
+                        keyboardType: TextInputType.emailAddress,
                         decoration: FormFieldDecoration(
-                          labelText: context.t.clientFormEmail,
+                          hintText: context.t.clientFormEmail,
                         ),
                         validator: FormBuilderValidators.compose([]),
                       ),
@@ -106,22 +112,26 @@ class ClientForm extends ConsumerWidget {
                     children: [
                       FormBuilderTextField(
                         name: 'contactPersonName',
+                        keyboardType: TextInputType.name,
+                        textCapitalization: TextCapitalization.words,
                         decoration: FormFieldDecoration(
-                          labelText: context.t.clientFormName,
+                          hintText: context.t.clientFormName,
                         ),
                         validator: FormBuilderValidators.compose([]),
                       ),
                       FormBuilderTextField(
                         name: 'contactPersonPhone',
+                        keyboardType: TextInputType.phone,
                         decoration: FormFieldDecoration(
-                          labelText: context.t.clientFormPhone,
+                          hintText: context.t.clientFormPhone,
                         ),
                         validator: FormBuilderValidators.compose([]),
                       ),
                       FormBuilderTextField(
                         name: 'contactPersonEmail',
+                        keyboardType: TextInputType.emailAddress,
                         decoration: FormFieldDecoration(
-                          labelText: context.t.clientFormEmail,
+                          hintText: context.t.clientFormEmail,
                         ),
                         validator: FormBuilderValidators.compose([]),
                       ),
@@ -132,10 +142,12 @@ class ClientForm extends ConsumerWidget {
                     children: [
                       FormBuilderTextField(
                         name: 'billingAddress',
+                        keyboardType: TextInputType.multiline,
+                        textCapitalization: TextCapitalization.words,
                         minLines: 3,
                         maxLines: 5,
                         decoration: FormFieldDecoration(
-                          labelText: context.t.clientFormAddress,
+                          hintText: context.t.clientFormAddress,
                         ),
                         validator: FormBuilderValidators.compose([]),
                       ),

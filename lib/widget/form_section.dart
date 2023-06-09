@@ -20,8 +20,11 @@ class FormSection extends ConsumerWidget {
           padding:
               const EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 8),
           child: Text(
-            title,
-            style: Theme.of(context).textTheme.labelLarge,
+            title.toUpperCase(),
+            style: Theme.of(context)
+                .textTheme
+                .labelLarge!
+                .copyWith(fontWeight: FontWeight.bold),
           ),
         ),
         ColoredBox(
