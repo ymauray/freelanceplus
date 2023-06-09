@@ -17,6 +17,10 @@ void main() async {
 
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   GoogleFonts.config.allowRuntimeFetching = false;
+  await SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.manual,
+    overlays: [SystemUiOverlay.bottom],
+  );
 
   if (Platform.isIOS || Platform.isAndroid) {
     await Firebase.initializeApp(
