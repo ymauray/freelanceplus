@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:freelanceplus/provider/database_provider.dart';
+import 'package:freelanceplus/widget/client_form.dart';
 import 'package:freelanceplus/widget/home_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FreelancePlusApp extends ConsumerWidget {
   const FreelancePlusApp({super.key});
@@ -16,10 +18,13 @@ class FreelancePlusApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Project+',
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localizationsDelegates: const [
+        FormBuilderLocalizations.delegate,
+        ...AppLocalizations.localizationsDelegates
+      ],
       supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff78acf1)),
         useMaterial3: true,
         textTheme: GoogleFonts.sourceSans3TextTheme(),
         appBarTheme: const AppBarTheme().copyWith(
@@ -36,6 +41,9 @@ class FreelancePlusApp extends ConsumerWidget {
               )
               .value ??
           Container(),
+      routes: {
+        '/client/add': (context) => ClientForm(),
+      },
     );
   }
 }

@@ -15,21 +15,6 @@ class HomePage extends ConsumerWidget {
     FlutterNativeSplash.remove();
   }
 
-  String _title(BuildContext context, int tabIndex) {
-    switch (tabIndex) {
-      case 0:
-        return AppLocalizations.of(context)!.home;
-      case 1:
-        return AppLocalizations.of(context)!.clients;
-      case 2:
-        return AppLocalizations.of(context)!.projects;
-      case 3:
-        return AppLocalizations.of(context)!.settings;
-      default:
-        return '';
-    }
-  }
-
   Widget _widget(BuildContext context, int tabIndex) {
     switch (tabIndex) {
       case 0:
@@ -50,16 +35,6 @@ class HomePage extends ConsumerWidget {
     final tabIndex = ref.watch(tabIndexProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          if (tabIndex == 1 || tabIndex == 2)
-            IconButton(
-              icon: const Icon(Icons.add_outlined),
-              onPressed: () {},
-            ),
-        ],
-        title: Text(_title(context, tabIndex)),
-      ),
       body: _widget(context, tabIndex),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: tabIndex,

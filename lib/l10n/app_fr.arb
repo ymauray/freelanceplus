@@ -1,5 +1,5 @@
 {
-    "helloWorld": "Bonjour le monde",
+    "appTitle": "Freelance+",
     "settings": "Paramètres",
     "home": "Accueil",
     "clients": "Clients",
@@ -10,5 +10,18 @@
     "restore": "Restaurer",
     "confirmDeleteDatabase": "Êtes-vous sûr de vouloir supprimer la base de données ?",
     "yes": "Oui",
-    "no": "Non"
+    "no": "Non",
+    "cancel": "Annuler",
+    "ok": "OK",
+    "newClient": "Nouveau client",
+    "yourProjectsInYourPocket": "Vos projets dans votre poche",
+    "clientFormFirstname": "Prénom",
+    "clientFormLastname": "Nom",
+    "clientFormName": "Nom",
+    "clientFormAddress": "Adresse",
+    "clientFormPhone": "Téléphone",
+    "clientFormEmail": "Email",
+    "clientFormInformations": "Informations du client",
+    "clientFormContactPerson": "Personne de contact",
+    "clientFormBillingAddress": "Adresse de facturation"
 }

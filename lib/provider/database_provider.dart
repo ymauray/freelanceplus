@@ -54,10 +54,14 @@ void _create(Database db) {
     ..execute('''
       CREATE TABLE client (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        email TEXT NOT NULL,
-        phone TEXT NOT NULL,
+        company TEXT NOT NULL,
         address TEXT NOT NULL,
+        phone TEXT NOT NULL,
+        email TEXT,
+        contactPersonName TEXT,
+        contactPersonPhone TEXT,
+        contactPersonEmail TEXT,
+        billingAddress TEXT,
         created_at INTEGER NOT NULL,
         updated_at INTEGER NOT NULL
       )

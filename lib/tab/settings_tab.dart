@@ -17,54 +17,61 @@ class SettingsTab extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final database = ref.watch(databaseProvider);
 
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SettingsGroup(
-            title: context.t.database,
-            children: [
-              SettingsAction(
-                title: Text(
-                  context.t.backup,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(context.t.settings),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SettingsGroup(
+              title: context.t.database,
+              children: [
+                SettingsAction(
+                  title: Text(
+                    context.t.backup,
+                  ),
+                  onTap: () {
+                    ScaffoldMessenger.of(context)
+                        .failure('Not implemented yet');
+                  },
                 ),
-                onTap: () {
-                  ScaffoldMessenger.of(context).failure('Not implemented yet');
-                },
-              ),
-              SettingsAction(
-                title: Text(
-                  context.t.restore,
+                SettingsAction(
+                  title: Text(
+                    context.t.restore,
+                  ),
+                  onTap: () {
+                    ScaffoldMessenger.of(context)
+                        .failure('Not implemented yet');
+                  },
                 ),
-                onTap: () {
-                  ScaffoldMessenger.of(context).failure('Not implemented yet');
-                },
-              ),
-              SettingsAction(
-                title: Text(context.t.delete),
-                onTap: () {
-                  database.whenData((database) async {
-                    final result = await _showConfirmationDialog(context);
-                    if (result != true) {
-                      return;
-                    }
-                    await database.erase();
-                    ref
-                      ..invalidate(databaseProvider)
-                      ..read(databaseProvider).whenData((database) async {
-                        ref.read(tabIndexProvider.notifier).change(0);
-                        await Navigator.of(context).pushReplacement(
-                          MaterialPageRoute<HomePage>(
-                            builder: (BuildContext context) => HomePage(),
-                          ),
-                        );
-                      });
-                  });
-                },
-              ),
-            ],
-          ),
-        ],
+                SettingsAction(
+                  title: Text(context.t.delete),
+                  onTap: () {
+                    database.whenData((database) async {
+                      final result = await _showConfirmationDialog(context);
+                      if (result != true) {
+                        return;
+                      }
+                      await database.erase();
+                      ref
+                        ..invalidate(databaseProvider)
+                        ..read(databaseProvider).whenData((database) async {
+                          ref.read(tabIndexProvider.notifier).change(0);
+                          await Navigator.of(context).pushReplacement(
+                            MaterialPageRoute<HomePage>(
+                              builder: (BuildContext context) => HomePage(),
+                            ),
+                          );
+                        });
+                    });
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
