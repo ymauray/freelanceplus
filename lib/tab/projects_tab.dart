@@ -12,6 +12,7 @@ class ProjectsTab extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(context.t.projects),
+        centerTitle: true,
       ),
       body: Center(
         child: Text(context.t.projects),

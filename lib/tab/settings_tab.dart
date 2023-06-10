@@ -20,6 +20,7 @@ class SettingsTab extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(context.t.settings),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(

@@ -24,15 +24,14 @@ class FreelancePlusApp extends ConsumerWidget {
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xff78acf1),
-        ),
+        //colorScheme: ColorScheme.fromSeed(
+        //  seedColor: const Color(0xff78acf1),
+        //),
         useMaterial3: true,
         textTheme: GoogleFonts.sourceSans3TextTheme(),
         scaffoldBackgroundColor: Colors.grey[50],
         appBarTheme: const AppBarTheme().copyWith(
           titleTextStyle: GoogleFonts.breeSerif(
-            textStyle: Theme.of(context).textTheme.titleLarge,
             fontSize: 22,
             color: const Color(0xFF333333),
           ),

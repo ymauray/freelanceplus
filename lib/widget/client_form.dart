@@ -17,7 +17,7 @@ class ClientForm extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(context.t.newClient),
-        // action button to save the client
+        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.save),

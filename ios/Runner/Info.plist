@@ -72,5 +72,7 @@
 			<string>sms</string>
 			<string>mailto</string>
 		</array>
+        <key>NSContactsUsageDescription</key>
+        <string>Allow Freelance+ to access your contacts</string>
 	</dict>
 </plist>

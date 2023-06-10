@@ -16,6 +16,7 @@ class ClientsTab extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(context.t.clients),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.add_outlined),
