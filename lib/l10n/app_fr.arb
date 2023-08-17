@@ -23,5 +23,7 @@
     "clientFormEmail": "Email",
     "clientFormInformations": "Informations du client",
     "clientFormContactPerson": "Personne de contact",
-    "clientFormBillingAddress": "Adresse de facturation"
+    "clientFormBillingAddress": "Adresse de facturation",
+    "contactImport": "Importer un contact",
+    "contactImportError": "Erreur lors de l'importation des contacts"
 }

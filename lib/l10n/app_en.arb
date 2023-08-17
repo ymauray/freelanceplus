@@ -23,5 +23,7 @@
     "clientFormEmail": "Email",
     "clientFormInformations": "Client informations",
     "clientFormContactPerson": "Contact Person",
-    "clientFormBillingAddress": "Billing Address"
+    "clientFormBillingAddress": "Billing Address",
+    "contactImport": "Import from Contacts",
+    "contactImportError": "Error while importing contacts"
 }

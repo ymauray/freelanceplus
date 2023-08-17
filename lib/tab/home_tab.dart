@@ -36,7 +36,7 @@ class HomeTab extends ConsumerWidget {
             ),
             Text(
               context.t.yourProjectsInYourPocket.toUpperCase(),
-              style: GoogleFonts.sourceSans3(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
           ],
         ),

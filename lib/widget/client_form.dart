@@ -69,6 +69,14 @@ class ClientForm extends ConsumerWidget {
                         textCapitalization: TextCapitalization.words,
                         decoration: FormFieldDecoration(
                           hintText: context.t.clientFormName,
+                          suffixIcon: IconButton(
+                            onPressed: () async {
+                              await Navigator.of(context).pushNamed(
+                                '/contact/import',
+                              );
+                            },
+                            icon: const Icon(Icons.contact_mail_outlined),
+                          ),
                         ),
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(),

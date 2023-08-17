@@ -1,5 +1,5 @@
-import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:freelanceplus/model/client.dart';
+import 'package:freelanceplus/provider/database_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -10,55 +10,11 @@ class ClientRepository extends _$ClientRepository {
   Database? db;
 
   Future<List<Client>> _fetchClients() async {
-    //db = await ref.watch(databaseProvider.future);
-    //final rows = await db!.query('client');
-    //final clients = rows.map(Client.fromJson).toList();
+    db = await ref.watch(databaseProvider.future);
+    final rows = await db!.query('client');
+    final clients = rows.map(Client.fromJson).toList();
 
-    //return clients;
-    if (!await FlutterContacts.requestPermission(readonly: true)) {
-      return [];
-    } else {
-      final contacts = await FlutterContacts.getContacts(
-        withProperties: true,
-        withGroups: true,
-      );
-      //final organizations = contacts
-      //    .where(
-      //      (contact) => contact.groups
-      //          .map((group) => group.name)
-      //          .contains('Freelance+'),
-      //    )
-      //    .fold(
-      //      <Organization>[],
-      //      (organizations, contact) =>
-      //          [...contact.organizations, ...organizations],
-      //    )
-      //    .toSet()
-      //    .toList()
-      //    .where((organization) => organization.company != '')
-      //    .toList()
-      //  ..sort((a, b) => a.company.compareTo(b.company));
-      //return organizations
-      //    .map(
-      //      (organization) => Client(
-      //        company: organization.company,
-      //        address: '',
-      //        email: '',
-      //        phone: '',
-      //      ),
-      //    )
-      //    .toList();
-      return contacts
-          .map(
-            (contact) => Client(
-              company: contact.displayName,
-              address: contact.groups.map((group) => group.name).join(', '),
-              email: '',
-              phone: '',
-            ),
-          )
-          .toList();
-    }
+    return clients;
   }
 
   @override

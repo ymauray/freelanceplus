@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freelanceplus/l10n/l10n_extension.dart';
-import 'package:freelanceplus/model/client.dart';
 import 'package:freelanceplus/repository/client_repository.dart';
 
 class ClientsTab extends ConsumerWidget {
@@ -11,8 +10,6 @@ class ClientsTab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final clients = ref.watch(clientRepositoryProvider);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(context.t.clients),
@@ -26,20 +23,18 @@ class ClientsTab extends ConsumerWidget {
           ),
         ],
       ),
-      body: _ClientListView(clients: clients),
+      body: const _ClientListView(),
     );
   }
 }
 
 class _ClientListView extends ConsumerWidget {
-  const _ClientListView({
-    required this.clients,
-  });
-
-  final AsyncValue<List<Client>> clients;
+  const _ClientListView();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final clients = ref.watch(clientRepositoryProvider);
+
     return clients.when(
       data: (clients) {
         return ListView.builder(

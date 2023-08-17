@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freelanceplus/l10n/l10n_extension.dart';
 import 'package:freelanceplus/provider/tab_index_provider.dart';
 import 'package:freelanceplus/tab/clients_tab.dart';
 import 'package:freelanceplus/tab/home_tab.dart';
 import 'package:freelanceplus/tab/projects_tab.dart';
 import 'package:freelanceplus/tab/settings_tab.dart';
 
-class HomePage extends ConsumerWidget {
-  HomePage({
+class TabsPage extends ConsumerWidget {
+  TabsPage({
     super.key,
   }) {
     FlutterNativeSplash.remove();
@@ -43,19 +43,19 @@ class HomePage extends ConsumerWidget {
         items: [
           BottomNavigationBarItem(
             icon: const Icon(Icons.home_outlined),
-            label: AppLocalizations.of(context)!.home,
+            label: context.t.home,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.people_outline),
-            label: AppLocalizations.of(context)!.clients,
+            label: context.t.clients,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.book_outlined),
-            label: AppLocalizations.of(context)!.projects,
+            label: context.t.projects,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.settings_outlined),
-            label: AppLocalizations.of(context)!.settings,
+            label: context.t.settings,
           ),
         ],
       ),
