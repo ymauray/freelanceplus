@@ -3,9 +3,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:freelanceplus/provider/database_provider.dart';
+import 'package:freelanceplus/tabs_page.dart';
 import 'package:freelanceplus/widget/client_form.dart';
 import 'package:freelanceplus/widget/contact_list.dart';
-import 'package:freelanceplus/tabs_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FreelancePlusApp extends ConsumerWidget {

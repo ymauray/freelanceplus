@@ -1,18 +1,16 @@
 {
     "appTitle": "Freelance+",
-    "settings": "Paramètres",
-    "home": "Accueil",
-    "clients": "Clients",
-    "projects": "Projets",
-    "database": "Base de données",
-    "delete": "Supprimer",
-    "backup": "Sauvegarder",
-    "restore": "Restaurer",
-    "confirmDeleteDatabase": "Êtes-vous sûr de vouloir supprimer la base de données ?",
     "yes": "Oui",
     "no": "Non",
     "cancel": "Annuler",
     "ok": "OK",
+    "search": "Rechercher",
+
+    "home": "Accueil",
+    "clients": "Clients",
+    "projects": "Projets",
+    "settings": "Paramètres",
+
     "newClient": "Nouveau client",
     "yourProjectsInYourPocket": "Vos projets dans votre poche",
     "clientFormFirstname": "Prénom",
@@ -25,5 +23,11 @@
     "clientFormContactPerson": "Personne de contact",
     "clientFormBillingAddress": "Adresse de facturation",
     "contactImport": "Importer un contact",
-    "contactImportError": "Erreur lors de l'importation des contacts"
+    "contactImportError": "Erreur lors de l'importation des contacts",
+
+    "database": "Base de données",
+    "delete": "Supprimer",
+    "backup": "Sauvegarder",
+    "restore": "Restaurer",
+    "confirmDeleteDatabase": "Êtes-vous sûr de vouloir supprimer la base de données ?"
 }

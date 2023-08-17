@@ -3,7 +3,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freelanceplus/l10n/l10n_extension.dart';
 import 'package:freelanceplus/provider/tab_index_provider.dart';
-import 'package:freelanceplus/tab/clients_tab.dart';
+import 'package:freelanceplus/tab/client/clients_tab.dart';
 import 'package:freelanceplus/tab/home_tab.dart';
 import 'package:freelanceplus/tab/projects_tab.dart';
 import 'package:freelanceplus/tab/settings_tab.dart';

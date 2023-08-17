@@ -12,57 +12,11 @@ class ContactList extends ConsumerWidget {
     final contacts = ref.watch(contactsProvider);
 
     return Scaffold(
-      //appBar: AppBar(
-      //  title: Text(context.t.contactImport),
-      //  centerTitle: true,
-      //),
-      //body: _ContactListView(contacts: contacts),
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            floating: true,
-            pinned: true,
-            centerTitle: true,
-            title: const Text('Kindacode.com'),
-            bottom: AppBar(
-              automaticallyImplyLeading: false,
-              title: const SizedBox(
-                width: double.infinity,
-                height: 40,
-                child: Center(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Search for something',
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          //contacts.when(
-          //  data: (contacts) {
-          //    return SliverList.builder(
-          //      itemCount: contacts.length,
-          //      itemBuilder: (context, index) => null,
-          //    );
-          //  },
-          //  error: (_, __) {
-          //    return Center(
-          //      child: SliverToBoxAdapter(
-          //        child: Text(context.t.contactImportError),
-          //      ),
-          //    );
-          //  },
-          //  loading: () {
-          //    return const Center(
-          //      child: SliverToBoxAdapter(
-          //        child: CircularProgressIndicator(),
-          //      ),
-          //    );
-          //  },
-          //),
-        ],
+      appBar: AppBar(
+        title: Text(context.t.contactImport),
+        centerTitle: true,
       ),
+      body: _ContactListView(contacts: contacts),
     );
   }
 }

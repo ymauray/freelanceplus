@@ -1,18 +1,16 @@
 {
     "appTitle": "Freelance+",
-    "settings": "Settings",
-    "home": "Home",
-    "clients": "Clients",
-    "projects": "Projects",
-    "database": "Database",
-    "delete": "Delete",
-    "backup": "Backup",
-    "restore": "Restore",
-    "confirmDeleteDatabase": "Are you sure you want to delete the database?",
     "yes": "Yes",
     "no": "No",
     "cancel": "Cancel",
     "ok": "OK",
+    "search": "Search",
+
+    "home": "Home",
+    "clients": "Clients",
+    "projects": "Projects",
+    "settings": "Settings",
+
     "newClient": "New Client",
     "yourProjectsInYourPocket": "Your projects in your pocket",
     "clientFormFirstname": "First Name",
@@ -25,5 +23,11 @@
     "clientFormContactPerson": "Contact Person",
     "clientFormBillingAddress": "Billing Address",
     "contactImport": "Import from Contacts",
-    "contactImportError": "Error while importing contacts"
+    "contactImportError": "Error while importing contacts",
+
+    "database": "Database",
+    "delete": "Delete",
+    "backup": "Backup",
+    "restore": "Restore",
+    "confirmDeleteDatabase": "Are you sure you want to delete the database?"
 }

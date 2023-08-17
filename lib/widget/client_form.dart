@@ -21,15 +21,13 @@ class ClientForm extends ConsumerWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.save),
-            onPressed: () {
+            onPressed: () async {
               if (_formKey.currentState?.saveAndValidate() ?? false) {
                 debugPrint(_formKey.currentState?.value.toString());
-                ref
-                    .read(clientRepositoryProvider.notifier)
-                    .create(
-                      _formKey.currentState!.value,
-                    )
-                    .then((value) => Navigator.of(context).pop());
+                await (await ref.read(clientRepositoryProvider)).create(
+                  _formKey.currentState!.value,
+                );
+                Navigator.of(context).pop();
               } else {
                 debugPrint(_formKey.currentState?.value.toString());
                 debugPrint('validation failed');

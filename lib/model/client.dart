@@ -17,5 +17,5 @@ class Client with _$Client {
     String? billingAddress,
   }) = _Client;
 
-  factory Client.fromJson(Map<String, Object?> json) => _$ClientFromJson(json);
+  factory Client.fromJson(Map<String, dynamic> json) => _$ClientFromJson(json);
 }

@@ -6,13 +6,13 @@ part of 'client_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clientRepositoryHash() => r'49a5a3f577b6791ff4915f101fcbd2c9d83df618';
+String _$clientRepositoryHash() => r'eba89caca569afe3a85439b8f1700e58401a4652';
 
-/// See also [ClientRepository].
-@ProviderFor(ClientRepository)
+/// See also [clientRepository].
+@ProviderFor(clientRepository)
 final clientRepositoryProvider =
-    AutoDisposeAsyncNotifierProvider<ClientRepository, List<Client>>.internal(
-  ClientRepository.new,
+    AutoDisposeProvider<FutureOr<ClientRepository>>.internal(
+  clientRepository,
   name: r'clientRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
@@ -21,6 +21,7 @@ final clientRepositoryProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$ClientRepository = AutoDisposeAsyncNotifier<List<Client>>;
+typedef ClientRepositoryRef
+    = AutoDisposeProviderRef<FutureOr<ClientRepository>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member

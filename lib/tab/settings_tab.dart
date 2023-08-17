@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freelanceplus/l10n/l10n_extension.dart';
 import 'package:freelanceplus/provider/database_provider.dart';
 import 'package:freelanceplus/provider/tab_index_provider.dart';
+import 'package:freelanceplus/tabs_page.dart';
 import 'package:freelanceplus/widget/settings_action.dart';
 import 'package:freelanceplus/widget/settings_group.dart';
 import 'package:freelanceplus/widget/snack_bar_extension.dart';
-import 'package:freelanceplus/tabs_page.dart';
 
 class SettingsTab extends ConsumerWidget {
   const SettingsTab({
