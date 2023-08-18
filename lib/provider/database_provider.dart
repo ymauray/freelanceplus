@@ -23,7 +23,7 @@ extension DatabaseExtension on Database {
 
 @riverpod
 FutureOr<Database> database(DatabaseRef ref) async {
-  return await openDatabase(
+  final database = await openDatabase(
     await _databasePath,
     version: 1,
     onCreate: (db, version) {
@@ -41,6 +41,8 @@ FutureOr<Database> database(DatabaseRef ref) async {
       throw Exception('Downgrade not supported');
     },
   );
+
+  return database;
 }
 
 void _create(Database db) {

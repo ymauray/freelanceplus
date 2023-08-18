@@ -12,16 +12,18 @@ class Clients extends _$Clients {
     final searchTerm = ref.watch(searchTermProvider);
     final clientsRepository = await ref.read(clientRepositoryProvider);
     final clients = await clientsRepository.readAll();
+    clients.sort((a, b) => a.company.compareTo(b.company));
 
     if (searchTerm == '') {
       return clients;
     }
 
-    return clients
+    final value = clients
         .where(
           (client) =>
               client.company.toLowerCase().contains(searchTerm.toLowerCase()),
         )
         .toList();
+    return value;
   }
 }

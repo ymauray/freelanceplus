@@ -18,7 +18,10 @@ class ClientsTab extends ConsumerWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
                 child: TextField(
                   onChanged: (value) =>
                       ref.read(searchTermProvider.notifier).search(value),
@@ -57,14 +60,14 @@ class _ClientListView extends ConsumerWidget {
 
     return clients.when(
       data: (clients) {
-        return ListView.builder(
+        return ListView.separated(
           itemCount: clients.length,
+          separatorBuilder: (context, index) => const Divider(),
           itemBuilder: (context, index) {
             final client = clients[index];
 
             return ListTile(
               title: Text(client.company),
-              subtitle: Text(client.address),
               onTap: () {
                 Navigator.of(context).pushNamed('/client/${client.id}');
               },
