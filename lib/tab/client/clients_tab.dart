@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freelanceplus/l10n/l10n_extension.dart';
 import 'package:freelanceplus/tab/client/clients_provider.dart';
 import 'package:freelanceplus/tab/client/search_term_provider.dart';
+import 'package:freelanceplus/widget/client_form.dart';
+import 'package:go_router/go_router.dart';
 
 class ClientsTab extends ConsumerWidget {
   const ClientsTab({
@@ -41,7 +43,25 @@ class ClientsTab extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.add_outlined),
             onPressed: () {
-              Navigator.of(context).pushNamed('/client/add');
+              //context.go('/client/add');
+              showDialog<void>(
+                useRootNavigator: false,
+                useSafeArea: false,
+                context: context,
+                builder: (context) => Dialog(
+                  insetPadding: EdgeInsets.only(
+                    top: MediaQuery.of(context).padding.top + 32,
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16),
+                    ),
+                  ),
+                  child: ClientForm(),
+                ),
+              );
             },
           ),
         ],
@@ -67,9 +87,9 @@ class _ClientListView extends ConsumerWidget {
             final client = clients[index];
 
             return ListTile(
-              title: Text(client.company),
+              title: const Text('Compagny'),
               onTap: () {
-                Navigator.of(context).pushNamed('/client/${client.id}');
+                context.go('/client/${client.id}');
               },
             );
           },

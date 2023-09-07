@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'client.dart';
+part of 'contact_person.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,42 +14,46 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Client _$ClientFromJson(Map<String, dynamic> json) {
-  return _Client.fromJson(json);
+ContactPerson _$ContactPersonFromJson(Map<String, dynamic> json) {
+  return _ContactPerson.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Client {
+mixin _$ContactPerson {
   int get id => throw _privateConstructorUsedError;
+  int get clientId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
-  String? get address => throw _privateConstructorUsedError;
-  String? get notes => throw _privateConstructorUsedError;
+  String? get role => throw _privateConstructorUsedError;
+  List<int>? get projectIds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ClientCopyWith<Client> get copyWith => throw _privateConstructorUsedError;
+  $ContactPersonCopyWith<ContactPerson> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ClientCopyWith<$Res> {
-  factory $ClientCopyWith(Client value, $Res Function(Client) then) =
-      _$ClientCopyWithImpl<$Res, Client>;
+abstract class $ContactPersonCopyWith<$Res> {
+  factory $ContactPersonCopyWith(
+          ContactPerson value, $Res Function(ContactPerson) then) =
+      _$ContactPersonCopyWithImpl<$Res, ContactPerson>;
   @useResult
   $Res call(
       {int id,
+      int clientId,
       String name,
       String email,
       String? phoneNumber,
-      String? address,
-      String? notes});
+      String? role,
+      List<int>? projectIds});
 }
 
 /// @nodoc
-class _$ClientCopyWithImpl<$Res, $Val extends Client>
-    implements $ClientCopyWith<$Res> {
-  _$ClientCopyWithImpl(this._value, this._then);
+class _$ContactPersonCopyWithImpl<$Res, $Val extends ContactPerson>
+    implements $ContactPersonCopyWith<$Res> {
+  _$ContactPersonCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -60,77 +64,21 @@ class _$ClientCopyWithImpl<$Res, $Val extends Client>
   @override
   $Res call({
     Object? id = null,
+    Object? clientId = null,
     Object? name = null,
     Object? email = null,
     Object? phoneNumber = freezed,
-    Object? address = freezed,
-    Object? notes = freezed,
+    Object? role = freezed,
+    Object? projectIds = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: freezed == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String?,
-      notes: freezed == notes
-          ? _value.notes
-          : notes // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_ClientCopyWith<$Res> implements $ClientCopyWith<$Res> {
-  factory _$$_ClientCopyWith(_$_Client value, $Res Function(_$_Client) then) =
-      __$$_ClientCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int id,
-      String name,
-      String email,
-      String? phoneNumber,
-      String? address,
-      String? notes});
-}
-
-/// @nodoc
-class __$$_ClientCopyWithImpl<$Res>
-    extends _$ClientCopyWithImpl<$Res, _$_Client>
-    implements _$$_ClientCopyWith<$Res> {
-  __$$_ClientCopyWithImpl(_$_Client _value, $Res Function(_$_Client) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? email = null,
-    Object? phoneNumber = freezed,
-    Object? address = freezed,
-    Object? notes = freezed,
-  }) {
-    return _then(_$_Client(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      clientId: null == clientId
+          ? _value.clientId
+          : clientId // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
@@ -144,34 +92,108 @@ class __$$_ClientCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      address: freezed == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
               as String?,
-      notes: freezed == notes
-          ? _value.notes
-          : notes // ignore: cast_nullable_to_non_nullable
+      projectIds: freezed == projectIds
+          ? _value.projectIds
+          : projectIds // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ContactPersonCopyWith<$Res>
+    implements $ContactPersonCopyWith<$Res> {
+  factory _$$_ContactPersonCopyWith(
+          _$_ContactPerson value, $Res Function(_$_ContactPerson) then) =
+      __$$_ContactPersonCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      int clientId,
+      String name,
+      String email,
+      String? phoneNumber,
+      String? role,
+      List<int>? projectIds});
+}
+
+/// @nodoc
+class __$$_ContactPersonCopyWithImpl<$Res>
+    extends _$ContactPersonCopyWithImpl<$Res, _$_ContactPerson>
+    implements _$$_ContactPersonCopyWith<$Res> {
+  __$$_ContactPersonCopyWithImpl(
+      _$_ContactPerson _value, $Res Function(_$_ContactPerson) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? clientId = null,
+    Object? name = null,
+    Object? email = null,
+    Object? phoneNumber = freezed,
+    Object? role = freezed,
+    Object? projectIds = freezed,
+  }) {
+    return _then(_$_ContactPerson(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      clientId: null == clientId
+          ? _value.clientId
+          : clientId // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String?,
+      projectIds: freezed == projectIds
+          ? _value._projectIds
+          : projectIds // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Client implements _Client {
-  const _$_Client(
+class _$_ContactPerson implements _ContactPerson {
+  const _$_ContactPerson(
       {required this.id,
+      required this.clientId,
       required this.name,
       required this.email,
       this.phoneNumber,
-      this.address,
-      this.notes});
+      this.role,
+      final List<int>? projectIds})
+      : _projectIds = projectIds;
 
-  factory _$_Client.fromJson(Map<String, dynamic> json) =>
-      _$$_ClientFromJson(json);
+  factory _$_ContactPerson.fromJson(Map<String, dynamic> json) =>
+      _$$_ContactPersonFromJson(json);
 
   @override
   final int id;
+  @override
+  final int clientId;
   @override
   final String name;
   @override
@@ -179,61 +201,75 @@ class _$_Client implements _Client {
   @override
   final String? phoneNumber;
   @override
-  final String? address;
+  final String? role;
+  final List<int>? _projectIds;
   @override
-  final String? notes;
+  List<int>? get projectIds {
+    final value = _projectIds;
+    if (value == null) return null;
+    if (_projectIds is EqualUnmodifiableListView) return _projectIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Client(id: $id, name: $name, email: $email, phoneNumber: $phoneNumber, address: $address, notes: $notes)';
+    return 'ContactPerson(id: $id, clientId: $clientId, name: $name, email: $email, phoneNumber: $phoneNumber, role: $role, projectIds: $projectIds)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Client &&
+            other is _$_ContactPerson &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.clientId, clientId) ||
+                other.clientId == clientId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
-            (identical(other.address, address) || other.address == address) &&
-            (identical(other.notes, notes) || other.notes == notes));
+            (identical(other.role, role) || other.role == role) &&
+            const DeepCollectionEquality()
+                .equals(other._projectIds, _projectIds));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, email, phoneNumber, address, notes);
+  int get hashCode => Object.hash(runtimeType, id, clientId, name, email,
+      phoneNumber, role, const DeepCollectionEquality().hash(_projectIds));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClientCopyWith<_$_Client> get copyWith =>
-      __$$_ClientCopyWithImpl<_$_Client>(this, _$identity);
+  _$$_ContactPersonCopyWith<_$_ContactPerson> get copyWith =>
+      __$$_ContactPersonCopyWithImpl<_$_ContactPerson>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ClientToJson(
+    return _$$_ContactPersonToJson(
       this,
     );
   }
 }
 
-abstract class _Client implements Client {
-  const factory _Client(
+abstract class _ContactPerson implements ContactPerson {
+  const factory _ContactPerson(
       {required final int id,
+      required final int clientId,
       required final String name,
       required final String email,
       final String? phoneNumber,
-      final String? address,
-      final String? notes}) = _$_Client;
+      final String? role,
+      final List<int>? projectIds}) = _$_ContactPerson;
 
-  factory _Client.fromJson(Map<String, dynamic> json) = _$_Client.fromJson;
+  factory _ContactPerson.fromJson(Map<String, dynamic> json) =
+      _$_ContactPerson.fromJson;
 
   @override
   int get id;
+  @override
+  int get clientId;
   @override
   String get name;
   @override
@@ -241,11 +277,11 @@ abstract class _Client implements Client {
   @override
   String? get phoneNumber;
   @override
-  String? get address;
+  String? get role;
   @override
-  String? get notes;
+  List<int>? get projectIds;
   @override
   @JsonKey(ignore: true)
-  _$$_ClientCopyWith<_$_Client> get copyWith =>
+  _$$_ContactPersonCopyWith<_$_ContactPerson> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,15 +6,12 @@ part 'client.g.dart';
 @freezed
 class Client with _$Client {
   const factory Client({
-    required String company,
-    required String address,
-    required String phone,
+    required int id,
+    required String name,
     required String email,
-    int? id,
-    String? contactPersonName,
-    String? contactPersonPhone,
-    String? contactPersonEmail,
-    String? billingAddress,
+    String? phoneNumber,
+    String? address,
+    String? notes,
   }) = _Client;
 
   factory Client.fromJson(Map<String, dynamic> json) => _$ClientFromJson(json);

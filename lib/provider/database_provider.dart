@@ -1,101 +1,80 @@
-import 'dart:io';
-
 import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sqflite/sqflite.dart';
 
 part 'database_provider.g.dart';
 
-Future<String> get _databasePath async {
-  final databasePath = Platform.isIOS
-      ? join((await getLibraryDirectory()).path, 'freelanceplus.db')
-      : join(await getDatabasesPath(), 'freelanceplus.db');
-  return databasePath;
-}
+@Riverpod(keepAlive: true)
+class AppDatabase extends _$AppDatabase {
+  @override
+  FutureOr<Database> build() async {
+    return await _initDB('freelanceplus.db');
+  }
 
-extension DatabaseExtension on Database {
-  Future<void> erase() async {
-    await close();
-    await deleteDatabase(await _databasePath);
+  Future<void> erase() async {}
+
+  Future<Database> _initDB(String filePath) async {
+    final dbPath = await getDatabasesPath();
+    final path = join(dbPath, filePath);
+    //File(path).deleteSync();
+    return await openDatabase(path, version: 1, onCreate: _createDB);
+  }
+
+  Future<void> _createDB(Database db, int version) async {
+    await db.execute('''
+      CREATE TABLE clients (
+        id INTEGER PRIMARY KEY AUTOINCREMENT, 
+        name TEXT NOT NULL,
+        email TEXT NOT NULL,
+        phoneNumber TEXT,
+        address TEXT,
+        notes TEXT
+      );
+    ''');
+
+    await db.execute('''
+      CREATE TABLE projects (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          clientId INTEGER NOT NULL,
+          name TEXT NOT NULL,
+          description TEXT NOT NULL,
+          startDate TEXT,
+          endDate TEXT,
+          budget REAL,
+          FOREIGN KEY (clientId) REFERENCES clients (id)
+      );
+    ''');
+
+    await db.execute('''
+      CREATE TABLE contact_persons (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          clientId INTEGER NOT NULL,
+          name TEXT NOT NULL,
+          email TEXT NOT NULL,
+          phoneNumber TEXT,
+          role TEXT,
+          FOREIGN KEY (clientId) REFERENCES clients (id)
+      );
+    ''');
+
+    await db.execute('''
+      CREATE TABLE project_contact (
+          projectId INTEGER,
+          contactPersonId INTEGER,
+          PRIMARY KEY (projectId, contactPersonId),
+          FOREIGN KEY (projectId) REFERENCES projects (id),
+          FOREIGN KEY (contactPersonId) REFERENCES contact_persons (id)
+      );
+    ''');
+
+    await db.execute('''
+      CREATE TABLE properties (
+        id INTEGER PRIMARY KEY AUTOINCREMENT, 
+        name TEXT NOT NULL,
+        value TEXT NOT NULL
+      );
+    ''');
+
+    // Ajoutez d'autres tables ici
   }
 }
-
-@riverpod
-FutureOr<Database> database(DatabaseRef ref) async {
-  final database = await openDatabase(
-    await _databasePath,
-    version: 1,
-    onCreate: (db, version) {
-      _create(db);
-      for (var i = 2; i <= version; i++) {
-        _upgradeTo(db, i);
-      }
-    },
-    onUpgrade: (db, oldVersion, newVersion) {
-      for (var i = oldVersion + 1; i <= newVersion; i++) {
-        _upgradeTo(db, i);
-      }
-    },
-    onDowngrade: (db, oldVersion, newVersion) {
-      throw Exception('Downgrade not supported');
-    },
-  );
-
-  return database;
-}
-
-void _create(Database db) {
-  db
-    ..execute('''
-      CREATE TABLE properties (
-        name TEXT NOT NULL PRIMARY KEY,
-        value TEXT NOT NULL
-      )
-    ''')
-    ..execute('''
-      CREATE TABLE client (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        company TEXT NOT NULL,
-        address TEXT NOT NULL,
-        phone TEXT NOT NULL,
-        email TEXT,
-        contactPersonName TEXT,
-        contactPersonPhone TEXT,
-        contactPersonEmail TEXT,
-        billingAddress TEXT,
-        created_at INTEGER NOT NULL,
-        updated_at INTEGER NOT NULL
-      )
-    ''')
-    ..execute('''
-      CREATE TABLE project (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        description TEXT,
-        color INTEGER NOT NULL,
-        is_archived INTEGER NOT NULL DEFAULT 0,
-        is_deleted INTEGER NOT NULL DEFAULT 0,
-        created_at INTEGER NOT NULL,
-        updated_at INTEGER NOT NULL
-      )
-    ''')
-    ..execute('''
-      CREATE TABLE task (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        project_id INTEGER NOT NULL,
-        name TEXT NOT NULL,
-        description TEXT,
-        is_completed INTEGER NOT NULL DEFAULT 0,
-        is_archived INTEGER NOT NULL DEFAULT 0,
-        is_deleted INTEGER NOT NULL DEFAULT 0,
-        created_at INTEGER NOT NULL,
-        updated_at INTEGER NOT NULL
-      )
-    ''')
-    ..execute('''
-      INSERT INTO properties (name, value) VALUES ('show_emboarding', 'true')
-    ''');
-}
-
-void _upgradeTo(Database db, int version) {}

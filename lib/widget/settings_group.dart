@@ -40,7 +40,7 @@ class SettingsGroup extends ConsumerWidget {
                       height: 0,
                       color: const Color(0xff78acf1).withAlpha(64),
                     ),
-                  element
+                  element,
                 ],
               ),
             ),

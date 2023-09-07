@@ -5,12 +5,13 @@ import 'package:sqflite/sqflite.dart';
 part 'properties_repository.g.dart';
 
 class PropertiesRepository {
-  PropertiesRepository(this._database);
+  PropertiesRepository(this._database, this._appDatabase);
 
   final Database _database;
+  final AppDatabase _appDatabase;
 
   Future<void> erase() async {
-    await _database.erase();
+    await _appDatabase.erase();
   }
 
   Future<void> set(String name, String value) async {
@@ -41,6 +42,7 @@ class PropertiesRepository {
 Future<PropertiesRepository> propertiesRepository(
   PropertiesRepositoryRef ref,
 ) async {
-  final database = await ref.read(databaseProvider.future);
-  return PropertiesRepository(database);
+  final database = await ref.read(appDatabaseProvider.future);
+  final appDatabase = ref.read(appDatabaseProvider.notifier);
+  return PropertiesRepository(database, appDatabase);
 }

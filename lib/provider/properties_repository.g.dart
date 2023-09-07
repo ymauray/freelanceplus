@@ -7,7 +7,7 @@ part of 'properties_repository.dart';
 // **************************************************************************
 
 String _$propertiesRepositoryHash() =>
-    r'36858703dd04380348bb22243a47d2499ed4055f';
+    r'74f8867ad805165e20b703e4c693c27cab70529b';
 
 /// See also [propertiesRepository].
 @ProviderFor(propertiesRepository)

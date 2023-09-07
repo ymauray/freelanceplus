@@ -9,10 +9,14 @@ part 'clients_provider.g.dart';
 class Clients extends _$Clients {
   @override
   FutureOr<List<Client>> build() async {
+    return await _load();
+  }
+
+  Future<List<Client>> _load() async {
     final searchTerm = ref.watch(searchTermProvider);
-    final clientsRepository = await ref.read(clientRepositoryProvider);
+    final clientsRepository = await ref.read(clientRepositoryProvider.future);
     final clients = await clientsRepository.readAll();
-    clients.sort((a, b) => a.company.compareTo(b.company));
+    clients.sort((a, b) => a.name.compareTo(b.name));
 
     if (searchTerm == '') {
       return clients;
@@ -21,9 +25,14 @@ class Clients extends _$Clients {
     final value = clients
         .where(
           (client) =>
-              client.company.toLowerCase().contains(searchTerm.toLowerCase()),
+              client.name.toLowerCase().contains(searchTerm.toLowerCase()),
         )
         .toList();
     return value;
+  }
+
+  FutureOr<void> refresh() async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(_load);
   }
 }

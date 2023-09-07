@@ -22,7 +22,7 @@ class SettingsTab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final database = ref.watch(databaseProvider);
+    final database = ref.watch(appDatabaseProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -41,7 +41,7 @@ class SettingsTab extends ConsumerWidget {
                     context.t.backup,
                   ),
                   onTap: () {
-                    final database = ref.watch(databaseProvider);
+                    final database = ref.watch(appDatabaseProvider);
                     // ignore: cascade_invocations
                     database.whenData((database) async {
                       await database.close();
@@ -74,7 +74,7 @@ class SettingsTab extends ConsumerWidget {
                     context.t.restore,
                   ),
                   onTap: () {
-                    final database = ref.watch(databaseProvider);
+                    final database = ref.watch(appDatabaseProvider);
                     // ignore: cascade_invocations
                     database.whenData((database) async {
                       final result = await FilePicker.platform.pickFiles(
@@ -119,10 +119,10 @@ class SettingsTab extends ConsumerWidget {
                       if (result != true) {
                         return;
                       }
-                      await database.erase();
+                      await ref.read(appDatabaseProvider.notifier).erase();
                       ref
-                        ..invalidate(databaseProvider)
-                        ..read(databaseProvider).whenData((database) async {
+                        ..invalidate(appDatabaseProvider)
+                        ..read(appDatabaseProvider).whenData((database) async {
                           ref.read(tabIndexProvider.notifier).change(0);
                           await Navigator.of(context).pushReplacement(
                             MaterialPageRoute<TabsPage>(

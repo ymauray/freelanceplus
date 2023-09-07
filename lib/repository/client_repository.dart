@@ -6,34 +6,37 @@ import 'package:sqflite/sqflite.dart';
 part 'client_repository.g.dart';
 
 class ClientRepository {
-  ClientRepository(this.db);
+  ClientRepository(this._database);
 
-  Database? db;
+  final Database _database;
 
-  Future<List<Client>> readAll() async {
-    final rows = await db!.query('client');
-    final clients = rows.map(Client.fromJson).toList();
+  Future<Client> create(Client client) async {
+    final json = client.toJson();
 
-    return clients;
+    final id = await _database.insert('clients', json);
+    return client.copyWith(id: id);
   }
 
-  Future<void> create(Map<String, dynamic> value) async {
-    final now = DateTime.now().millisecondsSinceEpoch;
-    await db!.insert(
-      'client',
-      {
-        'created_at': now,
-        'updated_at': now,
-        ...value,
-      },
-    );
+  Future<List<Client>> readAll() async {
+    final result = await _database.query('clients');
+
+    return result.map(Client.fromJson).toList();
+  }
+
+  Future<void> update(Client client) async {
+    final json = client.toJson();
+
+    await _database
+        .update('clients', json, where: 'id = ?', whereArgs: [client.id]);
+  }
+
+  Future<void> delete(int id) async {
+    await _database.delete('clients', where: 'id = ?', whereArgs: [id]);
   }
 }
 
 @riverpod
-Raw<FutureOr<ClientRepository>> clientRepository(
-  ClientRepositoryRef ref,
-) async {
-  final db = await ref.watch(databaseProvider.future);
+FutureOr<ClientRepository> clientRepository(ClientRepositoryRef ref) async {
+  final db = await ref.read(appDatabaseProvider.future);
   return ClientRepository(db);
 }
